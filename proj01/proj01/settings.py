@@ -9,13 +9,21 @@ https://docs.djangoproject.com/en/2.1/topics/settings/
 For the full list of settings and their values, see
 https://docs.djangoproject.com/en/2.1/ref/settings/
 """
-
+import environ
 import os
+import sys
 
+env = environ.Env(DEBUG=(bool, False),)
+environ.Env.read_env('.env')
+#
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
-
+sys.stderr.write("*** settings.py *** start ***\n")
+sys.stderr.write(os.environ.get('DB_USER') + "\n")
+sys.stderr.write(os.environ.get('DB_PASSWORD') + "\n")
+sys.stderr.write(os.environ.get('DB_NAME') + "\n")
+#
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/2.1/howto/deployment/checklist/
 
@@ -77,9 +85,9 @@ WSGI_APPLICATION = 'proj01.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'django_city',
-        'USER': 'django',
-        'PASSWORD': 'tiger123',
+        'NAME': os.environ.get('DB_NAME'),
+        'USER': os.environ.get('DB_USER'),
+        'PASSWORD': os.environ.get('DB_PASSWORD'),
         'HOST': 'localhost',
         'PORT': '3306',
         'OPTIONS': {
