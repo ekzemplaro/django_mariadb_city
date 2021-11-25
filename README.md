@@ -12,13 +12,20 @@ mysql> create database django_city;
 mysql> grant all on django_city.* to django@localhost;
 
 cd proj01
-python3 manage.py migrate
+	python3 manage.py migrate
 
 cd data
-./go_restore.sh
+	./go_restore.sh
 
 cd proj01
-python3 manage.py runserver
+
+	create .env
+
+	DB_NAME=django_city
+	DB_USER=django
+	DB_PASSWORD=tiger123
+
+	python3 manage.py runserver
 
 http://127.0.0.1:8000/city/
 
