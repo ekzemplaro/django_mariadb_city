@@ -1,7 +1,7 @@
 from django.db import models
 
 class City(models.Model):
-    key = models.CharField(max_length=10)
+    key = models.CharField(max_length=10,primary_key=True)
     name = models.CharField(max_length=20)
     population = models.IntegerField(default=0)
     date_mod = models.DateField()
