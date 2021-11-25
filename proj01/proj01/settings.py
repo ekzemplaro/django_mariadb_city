@@ -20,9 +20,9 @@ environ.Env.read_env('.env')
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
 sys.stderr.write("*** settings.py *** start ***\n")
-sys.stderr.write(os.environ.get('DB_USER') + "\n")
-sys.stderr.write(os.environ.get('DB_PASSWORD') + "\n")
-sys.stderr.write(os.environ.get('DB_NAME') + "\n")
+sys.stderr.write(str(os.environ.get('DB_USER')) + "\n")
+sys.stderr.write(str(os.environ.get('DB_PASSWORD')) + "\n")
+sys.stderr.write(str(os.environ.get('DB_NAME')) + "\n")
 #
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/2.1/howto/deployment/checklist/
